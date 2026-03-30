@@ -1,4 +1,4 @@
-.PHONY: setup setup-dvc setup-kaggle train-audio train-video test lint format clean dvc-init dvc-push dvc-pull dvc-status kaggle-push notebook notebook-lab
+.PHONY: setup setup-dvc setup-kaggle train-audio train-video test lint format clean dvc-init dvc-push dvc-pull dvc-status kaggle-push colab-notebook notebook notebook-lab
 
 # ── Установка ──
 setup:
@@ -73,6 +73,19 @@ kaggle-push:
 		$(if $(WAIT),--wait,) \
 		$(if $(GPU),,$(if $(filter $(GPU),0 false),--no-gpu,)) \
 		$(if $(INTERNET),,$(if $(filter $(INTERNET),0 false),--no-internet,))
+
+# ── Google Colab ──
+colab-notebook:
+	@echo ""
+	@echo "Откройте ноутбук в Google Colab:"
+	@echo "  1. Перейдите в https://colab.research.google.com"
+	@echo "  2. File → Open notebook → GitHub"
+	@echo "  3. Вставьте URL репозитория"
+	@echo "  4. Выберите notebooks/colab/train.ipynb"
+	@echo ""
+	@echo "Или загрузите файл вручную:"
+	@echo "  notebooks/colab/train.ipynb"
+	@echo ""
 
 # ── Notebooks ──
 notebook:
